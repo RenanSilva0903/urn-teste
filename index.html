@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Urna</title>
+</head>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'montserrat';
+}
+
+h2{
+	background: #2a6856;
+	color: #fff;
+	padding: 30px;
+	display: flex;
+	justify-content: center;
+	text-transform: uppercase;
+}
+
+.urna{
+	position: relative;
+	display: flex;
+	top: 50px;
+	width: 800px;
+	height: 500px;
+	background: #ccc;
+	margin: auto;
+	border-radius: 30px;
+	padding: 10px;
+	box-shadow: 8px 8px 5px rgba(0,0,0,0.30);
+}
+.display{
+	position: relative;
+	display: flex;
+	justify-content: center;
+	width: 450px;
+	height: 500px;
+	border-radius: 30px;
+	background: #aaa;
+}
+.buttons{
+	position: relative;
+	width: 350px;
+	margin-left: 50px;
+	height: 500px;
+	border-radius: 30px;
+	background: #303030;
+}
+#f1{
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 30px;
+	margin-top: 50px;
+}
+#data{
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 30px;
+	margin-top: 50px;
+}
+#f1 button{
+	position: relative;
+	width: 80px;
+	padding: 5px;
+	margin: 0px;
+	margin-left: 10px;
+	margin-top: -05px;
+	background: #101010;
+	color: #fff;
+	font-size: 20pt;
+}
+
+#f1 button:active{
+	transform: translateY(10%);
+	filter: drop-shadow(0px 0px 2px #101010);
+}
+
+#data button{
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 80px;
+	padding: 15px;
+	margin: 10px;
+	margin-left: 10px;
+	margin-top: -05px;
+	background: #101010;
+	color: #fff;
+	font-size: 10pt;
+}
+#data button:active{
+	transform: translateY(10%);
+	filter: drop-shadow(0px 0px 2px #101010);
+}
+form{
+	position: relaive;
+	width: 500px;
+	height: 500px;
+	background: #2a6859;
+	border-radius: 30px;
+}
+form input{
+	width: 100%;
+	height: 100%;
+	border-radius: 30px;
+	outline: none;
+	border: 0;
+	background: #606060;
+	color: #fff;
+	font-size: 130pt;
+	text-align: center;
+}
+</style>
+<body>
+	<h2>Vote with segurance!</h2>
+	<div class="urna">
+	<div class="display">
+	<form name="calc">
+		<input type="text" name="txt" id="campo">
+	</form>
+	</div>	
+	<div class="buttons">
+		<div id="f1">
+			<button type="button"  onclick="calc.txt.value+='1'">1</button>
+			<button type="button" onclick="calc.txt.value+='2'">2</button>
+			<button type="button" onclick="calc.txt.value+='3'">3</button>
+		</div>
+		<div id="f1">
+			<button type="button" onclick="calc.txt.value+='4'">4</button>
+			<button type="button" onclick="calc.txt.value+='5'">5</button>
+			<button type="button" onclick="calc.txt.value+='6'">6</button>
+		</div>
+		<div id="f1">
+			<button type="button" onclick="calc.txt.value+='7'">7</button>
+			<button type="button" onclick="calc.txt.value+='8'">8</button>
+			<button type="button" onclick="calc.txt.value+='9'">9</button>
+		</div>
+		<div id="f1">
+			<button type="button" onclick="calc.txt.value+='0'">0</button>
+		</div>
+		<div id="data">
+			<button type="button" style="background-color: #fff; color: #000;" id="branco" onclick="showBranco()">BRANCO</button>
+			<button type="reset" onclick="calc.txt.value=''" style="background-color: red; color: #000;" id="vermelho">CORRIGE</button>
+			<button type="button" style="background-color: green; color:#000;" id="verde" onclick="Vote()">CONFIRMA</button>
+		</div>
+	</div>
+	</div>
+<!--áudios-->
+<audio src="som-button.mp3" style="display: none;" controls id="sound_one"></audio>
+<audio src="som-end.mp3" style="display: none;" controls id="sound-two"></audio>
+<!--áudios-->
+<script>
+setInterval(
+function erase(){
+	area.value = ""
+},10000)
+	
+	function Vote(){
+	let area = window.document.querySelector('#campo')
+	const audio_btntwo = window.document.querySelector('#sound-two')
+	area.value = "FIM"
+	area.style.fontWeight = "500"
+	area.style.fontSize = "120pt"
+	audio_btntwo.play()
+
+}
+
+addEventListener('click', function(){
+	const audio_btn = window.document.querySelector('#sound_one')
+	audio_btn.play()
+})
+
+
+function showBranco(){
+	let area_valor = window.document.querySelector('#campo')
+	area_valor.value = "BRANCO"
+	area_valor.style.fontSize = "70pt"
+	area_valor.style.fontWeight = "900"
+}
+
+// function audioBtn(e){
+// 	const audio_btn = window.document.querySelector('#sound_one')
+// 	audio_btn.play()
+// }
+
+</script>
+</body>
+</html>
